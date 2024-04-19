@@ -17,7 +17,7 @@ public class WeatherClientServiceImpl implements WeatherClientService {
     private final WeatherRepository weatherRepository;
 
     @Override
-    public Weather getWeather(String city, LocalDateTime localDateTime) {
+    public Weather getWeather() {
         Weather weather = Weather.builder()
                 .city("Minsk")
                 .localDateTime(LocalDateTime.now())

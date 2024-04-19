@@ -5,5 +5,5 @@ import com.example.weatherproject.model.Weather;
 import java.time.LocalDateTime;
 
 public interface WeatherClientService {
-    public Weather getWeather(String city, LocalDateTime localDateTime);
+    public Weather getWeather();
 }
