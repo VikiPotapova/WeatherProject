@@ -23,6 +23,7 @@ public class WeatherClientServiceImpl implements WeatherClientService {
                 .localDateTime(LocalDateTime.now())
                 .temperature(5)
                 .build();
+        weatherRepository.save(weather);
         return weather;
     }
 }
