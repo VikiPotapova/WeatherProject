@@ -20,7 +20,7 @@ public class WeatherController {
 
     @GetMapping
     public ResponseEntity<Optional<WeatherDto>> getWeather() {
-        Optional<WeatherDto> weatherDTO = Optional.ofNullable(weatherClientService.getWeather());
-        return new ResponseEntity<>(weatherDTO, HttpStatus.OK);
+        Optional<WeatherDto> weatherDto = Optional.ofNullable(weatherClientService.getWeather());
+        return new ResponseEntity<>(weatherDto, HttpStatus.OK);
     }
 }
