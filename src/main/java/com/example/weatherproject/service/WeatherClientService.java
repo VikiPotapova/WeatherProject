@@ -1,9 +1,7 @@
 package com.example.weatherproject.service;
 
-import com.example.weatherproject.model.Weather;
-
-import java.time.LocalDateTime;
+import com.example.weatherproject.DTO.WeatherDto;
 
 public interface WeatherClientService {
-    public Weather getWeather();
+    public WeatherDto getWeather();
 }

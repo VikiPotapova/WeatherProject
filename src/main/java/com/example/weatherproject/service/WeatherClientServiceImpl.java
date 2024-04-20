@@ -1,8 +1,8 @@
-package com.example.weatherproject.service.impl;
+package com.example.weatherproject.service;
 
+import com.example.weatherproject.DTO.WeatherDto;
 import com.example.weatherproject.model.Weather;
 import com.example.weatherproject.repository.WeatherRepository;
-import com.example.weatherproject.service.WeatherClientService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,15 +15,16 @@ import java.time.LocalDateTime;
 public class WeatherClientServiceImpl implements WeatherClientService {
 
     private final WeatherRepository weatherRepository;
+    private final WeatherMapper weatherMapper;
 
-    @Override
-    public Weather getWeather() {
+    public WeatherDto getWeather() {
         Weather weather = Weather.builder()
                 .city("Minsk")
                 .localDateTime(LocalDateTime.now())
                 .temperature(5)
                 .build();
         weatherRepository.save(weather);
-        return weather;
+        return weatherMapper.mapToDto(weather);
+
     }
 }

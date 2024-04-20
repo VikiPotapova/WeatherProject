@@ -1,4 +1,4 @@
-package com.example.weatherproject.model.DTO;
+package com.example.weatherproject.DTO;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class WeatherDTO {
+public class WeatherDto {
 
     @NotBlank
     private String city;
