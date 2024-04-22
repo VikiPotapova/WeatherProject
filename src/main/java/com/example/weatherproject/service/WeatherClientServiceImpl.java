@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -22,7 +21,6 @@ public class WeatherClientServiceImpl implements WeatherClientService {
 
     private final WeatherRepository weatherRepository;
     private final WeatherMapper weatherMapper;
-    private String key;
 
     @Override
     public WeatherDto getWeather(String city) {
