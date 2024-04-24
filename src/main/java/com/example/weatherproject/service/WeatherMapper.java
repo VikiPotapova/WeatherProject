@@ -7,11 +7,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class WeatherMapper {
     public WeatherDto mapToDto(Weather weather) {
-        WeatherDto dto = WeatherDto.builder()
+        WeatherDto weatherDto = WeatherDto.builder()
                 .city(weather.getCity())
                 .temperature(weather.getTemperature())
                 .localDateTime(weather.getLocalDateTime())
                 .build();
-        return dto;
+        return weatherDto;
+    }
+
+    public Weather mapToEntity(WeatherDto weatherDto) {
+        Weather weather = Weather.builder()
+                .city(weatherDto.getCity())
+                .temperature(weatherDto.getTemperature())
+                .localDateTime(weatherDto.getLocalDateTime())
+                .build();
+        return weather;
     }
 }
