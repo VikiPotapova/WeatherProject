@@ -2,13 +2,10 @@ package com.example.weatherproject.service;
 
 import com.example.weatherproject.DTO.WeatherDto;
 import com.example.weatherproject.exceptionHandler.ResponseReadingException;
-import com.example.weatherproject.model.Weather;
-import com.example.weatherproject.repository.WeatherRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -18,15 +15,27 @@ import java.time.LocalDateTime;
 
 @Component
 @Data
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class WeatherClientImpl implements WeatherClient {
 
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
-    @Value("${weather.clint.endpoint.key}")
-    private String key;
-    @Value("${weather.clint.endpoint.url}")
-    private String constantPartOfUrl;
+
+    private final String key;
+
+    private final String constantPartOfUrl;
+
+    public WeatherClientImpl(
+            RestTemplate restTemplate,
+            ObjectMapper objectMapper,
+            @Value("${weather.clint.endpoint.key}") String key,
+            @Value("${weather.clint.endpoint.url}") String constantPartOfUrl
+    ) {
+        this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
+        this.key = key;
+        this.constantPartOfUrl = constantPartOfUrl;
+    }
 
     @Override
     public WeatherDto getWeatherFromApi(String city) {
