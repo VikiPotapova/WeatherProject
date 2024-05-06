@@ -32,4 +32,24 @@ public class GlobalExceptionHandler {
                 e.getMessage(),
                 LocalDateTime.now());
     }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleUserNotFoundException(UserNotFoundException e) {
+        log.error(e.getMessage());
+        return new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                e.getMessage(),
+                LocalDateTime.now());
+    }
+
+    @ExceptionHandler(SameUserInDatabaseException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ErrorResponse handleSameUserInDatabaseException(SameUserInDatabaseException e) {
+        log.error(e.getMessage());
+        return new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                e.getMessage(),
+                LocalDateTime.now());
+    }
 }
