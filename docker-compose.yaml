@@ -1,0 +1,26 @@
+version: '2.26.1'
+services:
+  client-backend:
+    image: client
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8181:8181"
+    depends_on:
+      - database
+    environment:
+          - SERVER_PORT= 8181
+          - SPRING_DATASOURCE_URL=jdbc:postgresql:/weather_db
+  database:
+    image: postgres
+    container_name: postgres_container
+    ports:
+      - 5432:5432
+    environment:
+         - 'POSTGRES_USER=postgres'
+         - 'POSTGRES_PASSWORD=123'
+    volumes:
+      - ./infrastructure/db/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped

@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-weather
+      author: Victoria
+      changes:
+        - createTable:
+            tableName: weather
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: city
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: temperature
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: localDateTime
+                  type: timestamp
