@@ -8,8 +8,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-@Configuration
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+/*@Configuration
+//@EnableCaching
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})*/
+@SpringBootApplication
 public class WeatherProjectApplication {
 
     public static void main(String[] args) {

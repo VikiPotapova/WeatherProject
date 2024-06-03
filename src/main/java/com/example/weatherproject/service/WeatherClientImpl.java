@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 
 @Component
 @Data
-//@RequiredArgsConstructor
 public class WeatherClientImpl implements WeatherClient {
 
     private final RestTemplate restTemplate;

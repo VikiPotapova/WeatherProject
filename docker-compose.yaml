@@ -1,6 +1,14 @@
-version: '3.7'
+#version: '3.9'
 
 services:
+  database:
+   image: postgres
+   container_name: postgres_container
+   ports:
+    - "5432:5432"
+   environment:
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: 123
   client-backend:
     image: client
     build:
@@ -11,21 +19,54 @@ services:
     depends_on:
       - database
     environment:
-      - SERVER_PORT=8181
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://database/weather_db
+      #  - SERVER_PORT=8181
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/weather_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123
+      # - SPRING_DATASOURCE_URL=jdbc:postgresql://database/weather_db
 
-  database:
-    image: postgres
-    container_name: postgres_container
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123
-    volumes:
-      - ./infrastructure/db/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
-      - db-data:/var/lib/postgresql/data
-    restart: unless-stopped
 
-volumes:
-  db-data:
+#    volumes:
+#      - ./init-db/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
+#      - db-data:/var/lib/postgresql/data
+#    restart: unless-stopped
+
+#volumes:
+#  db-data:
+
+
+#1
+#  redis:
+#   image: redis:latest
+#   restart: always
+#   ports:
+#     - "6379:6379"
+#   volumes:
+#     - /path/to/local/dаta:/root/redis
+#     - /path/to/local/redis.conf:/usr/local/etc/redis/redis.conf
+#   environment:
+#     - REDIS_PASSWORD=my-password
+#     - REDIS_PORT=6379
+#     - REDIS_DATABASES=16
+
+#2
+# redis:
+#   image: redis:6.0.7
+#  container_name: redis
+# restart: always
+# volumes:
+#   - redis_volume_data:/data
+# ports:
+#   - 6379:6379
+# redis_insight:
+#   image: redislabs/redisinsight:1.14.0
+#   container_name: redis_insight
+#   restart: always
+#   ports:
+#     - 8001:8001
+#   volumes:
+#     - redis_insight_volume_data:/db
+
+# volumes:
+# redis_volume_data:
+# redis_insight_volume_data:

@@ -1,3 +1,4 @@
+/*
 package com.example.weatherproject.security.service;
 
 import com.example.weatherproject.exceptionHandler.SameUserInDatabaseException;
@@ -46,3 +47,4 @@ public class SecurityService {
         userRepository.save(newUser);
     }
 }
+*/

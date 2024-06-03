@@ -1,3 +1,4 @@
+/*
 package com.example.weatherproject.security.controller;
 
 import com.example.weatherproject.security.model.AuthRequest;
@@ -36,3 +37,4 @@ public class SecurityController {
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }
+*/
