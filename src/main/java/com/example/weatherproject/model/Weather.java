@@ -22,7 +22,7 @@ public class Weather {
 
     @Id
     @SequenceGenerator(name = "seq_weather", sequenceName = "weather_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_weather")
     private Long id;
 
     @Column(nullable = false)

@@ -3,6 +3,12 @@ databaseChangeLog:
       id: create-users
       author: Victoria
       changes:
+
+        - createSequence:
+            sequenceName: user_id_seq
+            startValue: 1
+            incrementBy: 1
+
         - createTable:
             tableName: users
             columns:
