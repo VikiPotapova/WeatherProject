@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestClientException;
 
 import java.util.Optional;
 
@@ -20,7 +19,7 @@ public class WeatherController {
 
     private final WeatherService weatherService;
 
-    //@Cacheable
+    @Cacheable
     @GetMapping("/{city}")
     public ResponseEntity<WeatherDto> getWeather(@PathVariable String city) {
         Optional<WeatherDto> weatherDto = Optional.ofNullable(weatherService.getWeather(city));

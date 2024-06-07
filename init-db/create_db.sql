@@ -1,1 +1,1 @@
-create database weather_db
+CREATE database weather_db

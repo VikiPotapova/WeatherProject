@@ -41,6 +41,5 @@ public class User {
     private String login;
 
     @Column(nullable = false)
-    @Size(min = 2, max = 50)
     private String password;
 }
