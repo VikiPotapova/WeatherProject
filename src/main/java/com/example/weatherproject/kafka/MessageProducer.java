@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 @Slf4j
 public class MessageProducer {
 
-    private KafkaTemplate<String, Object> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     public void sendMessageToKafkaTopic(String message) {
         CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("weather_info", message);
