@@ -1,8 +1,10 @@
 package com.example.weatherproject.controller;
 
 import com.example.weatherproject.DTO.WeatherDto;
+import com.example.weatherproject.kafka.MessageProducer;
 import com.example.weatherproject.service.WeatherService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,7 @@ import java.util.Optional;
 public class WeatherController {
 
     private final WeatherService weatherService;
+    private final MessageProducer messageProducer;
 
     @Cacheable
     @GetMapping("/{city}")
