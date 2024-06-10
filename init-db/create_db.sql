@@ -1,0 +1,1 @@
+CREATE database weather_db

@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-user
+      author: Victoria
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: first_name
+                  value: Ivan
+              - column:
+                  name: last_name
+                  value: Ivanov
+              - column:
+                  name: role
+                  value: ADMIN
+              - column:
+                  name: login
+                  value: admin
+              - column:
+                  name: password
+                  value: admin
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: first_name
+                  value: Sergey
+              - column:
+                  name: last_name
+                  value: Petrov
+              - column:
+                  name: role
+                  value: USER
+              - column:
+                  name: login
+                  value: sergey
+              - column:
+                  name: password
+                  value: sergey77
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: first_name
+                  value: Andrei
+              - column:
+                  name: last_name
+                  value: Sidorov
+              - column:
+                  name: role
+                  value: USER
+              - column:
+                  name: login
+                  value: andrei
+              - column:
+                  name: password
+                  value: andrei88

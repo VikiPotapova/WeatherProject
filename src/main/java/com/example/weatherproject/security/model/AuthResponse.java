@@ -1,3 +1,4 @@
+/*
 package com.example.weatherproject.security.model;
 
 import lombok.AllArgsConstructor;
@@ -8,3 +9,4 @@ import lombok.Data;
 public class AuthResponse {
     private String token;
 }
+*/

@@ -1,10 +1,11 @@
-FROM maven:3.8.4-openjdk-17 as builder
+FROM --platform=linux/amd64 maven:3.8.4-openjdk-17 as builder
 WORKDIR /app
-COPY . /app/.
-RUN mvn -f /app/pom.xml clean package -Dmaven.test.skip=true
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:17-jre-alpine
+FROM --platform=linux/amd64 openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=builder /app/target/*.jar /app/*.jar
+COPY --from=builder /app/target/*.jar /app/app.jar
 EXPOSE 8181
-ENTRYPOINT ["java", "-jar", "/app/*.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

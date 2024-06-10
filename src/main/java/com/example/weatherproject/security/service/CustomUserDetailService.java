@@ -1,3 +1,4 @@
+/*
 package com.example.weatherproject.security.service;
 
 import com.example.weatherproject.model.User;
@@ -23,3 +24,4 @@ public class CustomUserDetailService implements UserDetailsService {
                 .build();
     }
 }
+*/

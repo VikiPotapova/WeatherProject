@@ -1,3 +1,4 @@
+/*
 package com.example.weatherproject.security.filter;
 
 import com.example.weatherproject.security.service.JwtUtils;
@@ -43,3 +44,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 }
+*/

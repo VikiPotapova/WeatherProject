@@ -25,17 +25,21 @@ public class User {
     @SequenceGenerator(name = "seq_user", sequenceName = "user_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_user")
     private Long id;
+
     @Column(nullable = false)
     private String firstName;
+
     @Column(nullable = false)
     private String lastName;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
+
     @Column(nullable = false)
     @Size(min = 2, max = 50)
     private String login;
+
     @Column(nullable = false)
-    @Size(min = 2, max = 50)
     private String password;
 }

@@ -3,6 +3,12 @@ databaseChangeLog:
       id: create-weather
       author: Victoria
       changes:
+
+        - createSequence:
+            sequenceName: weather_id_seq
+            startValue: 1
+            incrementBy: 1
+
         - createTable:
             tableName: weather
             columns:
@@ -24,5 +30,5 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: localDateTime
+                  name: local_date_time
                   type: timestamp

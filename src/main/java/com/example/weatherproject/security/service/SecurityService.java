@@ -1,3 +1,4 @@
+/*
 package com.example.weatherproject.security.service;
 
 import com.example.weatherproject.exceptionHandler.SameUserInDatabaseException;
@@ -14,13 +15,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class SecurityService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
+
 
     public Optional<String> generateToken(AuthRequest authRequest) {
         User user = userRepository.getByLogin(authRequest.getLogin()).orElseThrow(() ->
@@ -46,3 +48,4 @@ public class SecurityService {
         userRepository.save(newUser);
     }
 }
+*/
