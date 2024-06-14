@@ -1,7 +1,6 @@
 package com.example.weatherproject.controller;
 
 import com.example.weatherproject.DTO.WeatherDto;
-import com.example.weatherproject.kafka.MessageProducer;
 import com.example.weatherproject.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
@@ -19,13 +18,11 @@ import java.util.Optional;
 public class WeatherController {
 
     private final WeatherService weatherService;
-    private final MessageProducer messageProducer;
 
     @Cacheable
     @GetMapping("/{city}")
     public ResponseEntity<WeatherDto> getWeather(@PathVariable String city) {
         Optional<WeatherDto> weatherDto = Optional.ofNullable(weatherService.getWeather(city));
-        messageProducer.sendMessageToKafkaTopic(weatherDto.get().toString());
         return weatherDto.map(ResponseEntity::ok)
                 .orElseThrow();
     }
