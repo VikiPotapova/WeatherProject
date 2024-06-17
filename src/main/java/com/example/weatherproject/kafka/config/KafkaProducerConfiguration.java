@@ -1,6 +1,7 @@
 package com.example.weatherproject.kafka.config;
 
 import com.example.weatherproject.DTO.WeatherDto;
+import com.example.weatherproject.model.Weather;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +22,7 @@ public class KafkaProducerConfiguration {
     private String bootstrapAddress;
 
     @Bean
-    public ProducerFactory<String, WeatherDto> producerFactory() {
+    public ProducerFactory<String, Weather> producerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -31,7 +32,7 @@ public class KafkaProducerConfiguration {
     }
 
     @Bean
-    public KafkaTemplate<String, WeatherDto> kafkaTemplate() {
+    public KafkaTemplate<String, Weather> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

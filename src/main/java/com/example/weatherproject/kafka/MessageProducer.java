@@ -1,6 +1,6 @@
 package com.example.weatherproject.kafka;
 
-import com.example.weatherproject.DTO.WeatherDto;
+import com.example.weatherproject.model.Weather;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -14,18 +14,18 @@ import java.util.concurrent.CompletableFuture;
 @Slf4j
 public class MessageProducer {
 
-    private final KafkaTemplate<String, WeatherDto> kafkaTemplate;
+    private final KafkaTemplate<String, Weather> kafkaTemplate;
 
-    public void sendMessageToKafkaTopic(WeatherDto weatherDto) {
-        CompletableFuture<SendResult<String, WeatherDto>> future = kafkaTemplate.send("weather_info", weatherDto);
+    public void sendMessageToKafkaTopic(Weather weather) {
+        CompletableFuture<SendResult<String, Weather>> future = kafkaTemplate.send("weather_info", weather);
 
         future.whenComplete((result, ex) -> {
 
             if (ex != null) {
                 System.out.println("Unable to send message=["
-                        + weatherDto + "] due to : " + ex.getMessage());
+                        + weather + "] due to : " + ex.getMessage());
             } else {
-                System.out.println("Sent message=[" + weatherDto +
+                System.out.println("Sent message=[" + weather +
                         "] with offset=[" + result.getRecordMetadata().offset() + "]" + "partition=[" + result.getRecordMetadata().partition() + "]");
             }
         });
